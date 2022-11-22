@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrackServiceImpl implements TrackService {
@@ -24,27 +25,28 @@ public class TrackServiceImpl implements TrackService {
 
     @Override
     public Track saveTrack(Track track) {
-        return null;
+        return trackRepository.save(track);
     }
 
     @Override
     public List<Track> getAllTracks() {
-        return null;
+        return trackRepository.findAll();
     }
 
     @Override
-    public Track getById(int id) {
-        return null;
+    public Optional<Track> getById(int id) {
+        return trackRepository.findById(id);
     }
 
     @Override
     public String deleteTrack(int id) {
-        return null;
+        trackRepository.deleteById(id);
+        return "Track successfully deleted.";
     }
 
     @Override
     public List<Track> getByTrackArtist(String trackArtist) {
-        return null;
+        return trackRepository.getByTrackArtist(trackArtist);
     }
 
     @Override
