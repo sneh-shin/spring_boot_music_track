@@ -5,10 +5,12 @@
  */
 package com.niit.jap.controller;
 
+import com.niit.jap.domain.Track;
 import com.niit.jap.service.TrackServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -19,4 +21,31 @@ public class TrackController {
     public TrackController(TrackServiceImpl trackService) {
         this.trackService = trackService;
     }
+
+    @PostMapping("/insertValue")
+    public ResponseEntity<?> getAll(@RequestBody Track track) {
+        return new ResponseEntity<>(trackService.getAllTracks(), HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/fetchValue/{id}")
+    public ResponseEntity<?> getById(@PathVariable int id) {
+        return new ResponseEntity<>(trackService.getById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/fetchValue")
+    public ResponseEntity<?> getAll() {
+        return new ResponseEntity<>(trackService.getAllTracks(), HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/deleteValue")
+    public ResponseEntity<?> deleteById(@PathVariable int id) {
+        return new ResponseEntity<>(trackService.deleteTrack(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/fetchValue/{trackArtist}")
+    public ResponseEntity<?> getByTrackArtist(@PathVariable String trackArtist) {
+        return new ResponseEntity<>(trackService.getByTrackArtist(trackArtist), HttpStatus.ACCEPTED);
+    }
 }
+
+
