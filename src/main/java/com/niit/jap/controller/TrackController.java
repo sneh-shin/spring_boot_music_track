@@ -23,8 +23,8 @@ public class TrackController {
     }
 
     @PostMapping("/insertValue")
-    public ResponseEntity<?> getAll(@RequestBody Track track) {
-        return new ResponseEntity<>(trackService.getAllTracks(), HttpStatus.ACCEPTED);
+    public ResponseEntity<?> save(@RequestBody Track track) {
+        return new ResponseEntity<>(trackService.saveTrack(track), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/fetchValue/{id}")
@@ -37,14 +37,19 @@ public class TrackController {
         return new ResponseEntity<>(trackService.getAllTracks(), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/deleteValue")
+    @DeleteMapping("/deleteValue/{id}")
     public ResponseEntity<?> deleteById(@PathVariable int id) {
         return new ResponseEntity<>(trackService.deleteTrack(id), HttpStatus.OK);
     }
 
-    @GetMapping("/fetchValue/{trackArtist}")
+    @GetMapping("/fetchValue/artist={trackArtist}")
     public ResponseEntity<?> getByTrackArtist(@PathVariable String trackArtist) {
         return new ResponseEntity<>(trackService.getByTrackArtist(trackArtist), HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("/updateValue/{id}")
+    public ResponseEntity<?> updateTrack(@PathVariable int id, @RequestBody Track track) {
+        return new ResponseEntity<>(trackService.updateTrack(id, track), HttpStatus.CREATED);
     }
 }
 

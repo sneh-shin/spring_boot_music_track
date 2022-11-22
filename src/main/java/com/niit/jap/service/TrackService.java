@@ -9,13 +9,12 @@ public interface TrackService {
     Track saveTrack(Track track);
 
     List<Track> getAllTracks();
-
     Optional<Track> getById(int id);
 
     String deleteTrack(int id);
 
     List<Track> getByTrackArtist(String trackArtist);
 
-    Track updateTrack(int id);
+    Track updateTrack(int id, Track track);
 
 }

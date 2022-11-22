@@ -11,11 +11,11 @@ import javax.persistence.Id;
 @Entity
 public class Track {
     @Id
-    int trackId;
-    String trackName;
-    String trackComments;
-    double trackRating;
-    String trackArtist;
+    private int trackId;
+    private String trackName;
+    private String trackComments;
+    private double trackRating;
+    private String trackArtist;
 
     public Track() {
     }
