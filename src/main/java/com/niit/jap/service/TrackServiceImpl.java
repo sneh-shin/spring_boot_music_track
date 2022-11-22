@@ -6,9 +6,11 @@
 package com.niit.jap.service;
 
 import com.niit.jap.domain.Track;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TrackServiceImpl implements TrackService {
     @Override
     public Track saveTrack(Track track) {
